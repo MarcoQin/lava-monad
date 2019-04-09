@@ -1,0 +1,61 @@
+name:                lava-monad
+version:             0.1.0.0
+github:              "MarcoQin/lava-monad"
+license:             MIT
+author:              "Marco Qin"
+maintainer:          "qyyfy2009@gmail.com"
+copyright:           "2019 Marco Qin"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/marcoqin/lava-monad#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  
+
+executables:
+  lava-monad-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lava-monad
+    extra-lib-dirs:
+    - ./lava-core
+    extra-libraries:
+    - avformat
+    - avcodec
+    - swscale
+    - avutil
+    - swresample
+    - z
+    - SDL2
+    c-sources:
+    - ./lava-core/core.c
+
+tests:
+  lava-monad-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lava-monad

@@ -1,0 +1,3 @@
+[submodule "lava-core"]
+	path = lava-core
+	url = https://github.com/MarcoQin/lava-c.git
